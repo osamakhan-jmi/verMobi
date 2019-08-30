@@ -1,0 +1,105 @@
+package com.okSpring.verMobi;
+
+
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.logging.Logger;
+
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.stereotype.Component;
+import org.springframework.web.socket.CloseStatus;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+import com.okSpring.verMobi.Utils.Extra;
+
+
+@Component
+public class SocketHandler extends TextWebSocketHandler {
+	
+	public static Logger LOG = Logger.getLogger(SocketHandler.class.getName());  
+
+	static List sessions = new CopyOnWriteArrayList<>();
+	static HashMap<String, String> map = new HashMap<>();
+
+	@Override
+	public void afterConnectionEstablished(WebSocketSession session) {		
+		sessions.add(session);
+		LOG.info("New Session added to heap: " + session.getId());
+		
+		//MD5 stored in map		
+		Extra md5 = new Extra();
+		String md5sessinoId = md5.getMd5(session.getId());
+		map.put(md5sessinoId,session.getId());
+		LOG.info("QR value: " + md5sessinoId);
+		try {
+			//Sending text message
+			TextMessage msg = new TextMessage("an##" + md5sessinoId);		
+			session.sendMessage(msg);
+		}catch(Exception e) {
+			LOG.info("Exception SocketHandler --> afterConnectionEstablished " + e.toString());
+		}
+		
+	}
+	
+	@Override
+	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {		
+		//Deleting from  map
+		Extra md5 = new Extra();
+		String md5sessinoId = md5.getMd5(session.getId());
+		LOG.info("QR value: " + md5sessinoId);
+		map.remove(md5sessinoId);		
+		
+		//Deleting from sessions
+		LOG.info("Old Session: " + session.getId() +  " closed and deleted from heap" );
+		sessions.remove(session);		
+
+	}
+	
+	public static Boolean sendMessageToClinet(String sessionIdHashed) {
+		LOG.info("SocketHandler --> sendMessageToClinet, Session Id: " + sessionIdHashed);
+		LOG.info("Hashed Session Id: " + sessionIdHashed);
+		String sessionId = map.get(sessionIdHashed);
+		try {
+			for(int i=0;i<sessions.size();i++) {
+				WebSocketSession session = (WebSocketSession) sessions.get(i);
+				if(session.getId().equalsIgnoreCase(sessionId)) {
+					LOG.info("Session found: " + session.getId());
+					TextMessage msg = new TextMessage("ok##"+sessionIdHashed);		
+					session.sendMessage(msg);
+					LOG.info("Message sent....");
+					return true;
+				}
+			}
+			return false;
+		}catch(Exception e) {
+			LOG.info("Exception SocketHandler --> sendMessageToClinet " + e.toString());
+			return false;
+		}
+	}
+	
+	public static Boolean findSession(String sessionIdHashed) {
+		LOG.info("SocketHandler --> findSession, Session Id: " + sessionIdHashed);
+		LOG.info("Hashed Session Id: " + sessionIdHashed);
+		String sessionId = map.get(sessionIdHashed);
+		try {
+			for(int i=0;i<sessions.size();i++) {
+				WebSocketSession session = (WebSocketSession) sessions.get(i);
+				if(session.getId().equalsIgnoreCase(sessionId)) {
+					LOG.info("Session found: " + session.getId());
+					return true;
+				}
+			}
+			return false;
+		}catch(Exception e) {
+			LOG.info("Exception SocketHandler --> sendMessageToClinet " + e.toString());
+			return false;
+		}
+		
+	}
+
+}
