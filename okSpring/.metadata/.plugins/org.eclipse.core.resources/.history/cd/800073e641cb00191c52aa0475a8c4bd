@@ -1,0 +1,44 @@
+package com.okSpring.verMobi.model;
+
+import java.sql.Date;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="userInfo")
+@NamedQuery(name="userInfo.findAll", query="SELECT s FROM userInfo s")
+public class UserInfo {
+
+	@EmbeddedId
+	private UserPhone userPhone;
+	
+	@Column(name="OTP")
+	private String otp;
+	
+	@Column(name="IS_MSISDN_VERIFIED")
+	private String isMsisdnVerfied;
+	
+	public String getIsMsisdnVerfied() {
+		return isMsisdnVerfied;
+	}
+
+	public void setIsMsisdnVerfied(String isMsisdnVerfied) {
+		this.isMsisdnVerfied = isMsisdnVerfied;
+	}
+
+	public String getOtp() {
+		return otp;
+	}
+
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
+	
+	public UserPhone getUserPhone() {
+		return this.userPhone;
+	}
+	public void setUserPhone(UserPhone userPhone) {
+		this.userPhone = userPhone;
+	}
+}

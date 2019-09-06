@@ -1,0 +1,10 @@
+package com.okSpring.verMobi.model;
+
+
+@Entity
+@Table(name="userInfo")
+@NamedQuery(name="LoginInfo.findAll", query="SELECT s FROM LoginInfo s")
+
+public class UserInfo {
+
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QRScan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dY1-jV-8ik">
+                                <rect key="frame" x="20" y="40" width="280" height="115"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="qDX-G1-GOQ">
+                                <rect key="frame" x="20" y="389" width="280" height="45"/>
+                                <color key="backgroundColor" red="0.74709561390000001" green="0.75574501199999999" blue="0.77336421320000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="1v1-zi-MSc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XaT-hB-VOX">
+                                <rect key="frame" x="20" y="199" width="280" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="go" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
+                            </textField>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DR-gX-SZe">
+                                <rect key="frame" x="20" y="265" width="280" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="WCc-17-OTb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="19"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startStopClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tRi-ap-h4d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dY1-jV-8ik" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="O8d-KL-3Se"/>
+                            <constraint firstItem="dY1-jV-8ik" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Oq5-Wn-xZU"/>
+                            <constraint firstItem="4DR-gX-SZe" firstAttribute="top" secondItem="XaT-hB-VOX" secondAttribute="bottom" constant="36" id="afG-Wz-jYu"/>
+                            <constraint firstItem="dY1-jV-8ik" firstAttribute="trailing" secondItem="XaT-hB-VOX" secondAttribute="trailing" id="djb-Qz-WNB"/>
+                            <constraint firstItem="dY1-jV-8ik" firstAttribute="leading" secondItem="XaT-hB-VOX" secondAttribute="leading" id="gcZ-ZZ-yoI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qDX-G1-GOQ" secondAttribute="bottom" constant="46" id="grM-99-pDF"/>
+                            <constraint firstItem="4DR-gX-SZe" firstAttribute="leading" secondItem="qDX-G1-GOQ" secondAttribute="leading" id="htZ-Xq-piw"/>
+                            <constraint firstItem="dY1-jV-8ik" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lVO-er-fhF"/>
+                            <constraint firstItem="XaT-hB-VOX" firstAttribute="top" secondItem="dY1-jV-8ik" secondAttribute="bottom" constant="44" id="sLR-bh-9sq"/>
+                            <constraint firstItem="qDX-G1-GOQ" firstAttribute="top" secondItem="4DR-gX-SZe" secondAttribute="bottom" constant="81" id="sTC-JJ-DSS"/>
+                            <constraint firstItem="XaT-hB-VOX" firstAttribute="trailing" secondItem="4DR-gX-SZe" secondAttribute="trailing" id="u5b-yt-4ox"/>
+                            <constraint firstItem="4DR-gX-SZe" firstAttribute="trailing" secondItem="qDX-G1-GOQ" secondAttribute="trailing" id="uDu-Xp-ogy"/>
+                            <constraint firstItem="XaT-hB-VOX" firstAttribute="leading" secondItem="4DR-gX-SZe" secondAttribute="leading" id="uJw-PG-aHf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnStartStop" destination="4DR-gX-SZe" id="l1Y-Ep-Bpr"/>
+                        <outlet property="lblString" destination="qDX-G1-GOQ" id="cld-H2-iRm"/>
+                        <outlet property="msisdn" destination="XaT-hB-VOX" id="TJT-YW-1fB"/>
+                        <outlet property="viewPreview" destination="dY1-jV-8ik" id="gtt-kR-woE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-93.599999999999994" y="84.107946026986511"/>
+        </scene>
+    </scenes>
+</document>

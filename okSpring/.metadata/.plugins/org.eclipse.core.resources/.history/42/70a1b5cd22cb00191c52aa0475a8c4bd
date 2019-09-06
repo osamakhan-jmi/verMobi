@@ -1,0 +1,33 @@
+package com.okSpring.verMobi.model;
+
+public class UserPhone {
+	
+	private static final long serialVersionUID = 1L;
+
+	@Column(name="mobile_number")
+	private String mobileNumber;
+
+	@Column(name="imei")
+	private String imei;
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public String getImei() {
+		return imei;
+	}
+
+	public void setImei(String imei) {
+		this.imei = imei;
+	}
+
+}
+
+
+
+

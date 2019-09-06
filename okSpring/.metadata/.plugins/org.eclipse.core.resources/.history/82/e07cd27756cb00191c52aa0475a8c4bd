@@ -1,0 +1,26 @@
+package com.okSpring.verMobi.Utils;
+
+
+import java.util.logging.Logger;
+
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
+
+
+public class SMS {
+
+	public static Logger LOG = Logger.getLogger(SMS.class.getName());
+
+    public static void sendSMS(String to, String message) throws UnirestException {
+
+    	String urlString = "https://api.msg91.com/api/sendhttp.php?mobiles="+to+"&authkey=291929Ah59RnxSw5d69633c&route=4&sender=TESTIN&message="+message+"&country=91";
+    	
+    	try {
+    		HttpResponse<String> response = Unirest.get(urlString).asString();
+    		LOG.info("OTP sent: " + urlString);
+    	}catch(Exception e) {
+    		LOG.info("Exception SMS-->sendSMS " + e.toString());
+    	}
+    }
+}

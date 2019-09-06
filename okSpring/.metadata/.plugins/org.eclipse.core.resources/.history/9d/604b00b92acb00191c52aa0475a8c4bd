@@ -1,0 +1,26 @@
+package com.okSpring.verMobi.model;
+
+import java.sql.Date;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="userInfo")
+@NamedQuery(name="userInfo.findAll", query="SELECT s FROM userInfo s")
+public class UserInfo {
+
+	@EmbeddedId
+	private UserPhone userPhone;
+	
+	@Column(name="OTP_TIME")
+	private String otpTime;
+		
+	public String getOtpTime() {
+		return otpTime;
+	}
+
+	public void setOtpTime(String otpTime) {
+		this.otpTime = otpTime;
+	}
+}

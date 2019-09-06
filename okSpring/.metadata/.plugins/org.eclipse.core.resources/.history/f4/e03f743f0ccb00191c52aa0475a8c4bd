@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Mobile</title>
+    <script src="/app.js"></script>
+    <script src="/jquery.min.js"></script>
+    <script src="/qrcode.js"></script>
+</head>
+<body onload="interval()">
+<noscript>
+	<h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable Javascript and reload this page!
+	</h2>
+</noscript>
+
+<table align="center" border="1">
+  <tr>
+    <th>Scan QR</th>
+  </tr>
+  <tr>
+  	<td><div id = "qrcode" style = "height: 400px;width: 400px;"></div></td>
+  </tr>
+</table>
+
+
+<div id="confirmboxpopup" class="confirmboxpopup" style="display: none"></div>
+<div id="confirmbox" class="confirm_message">
+        <div id="confirmboxtitle" class="title"></div>
+        <div id="confirmboxmessage" class="message"></div>
+        <div id="confirmbuttons" style="float: right; padding-top: 7px">
+            <button id="confirmboxok" type="button">ok</button>
+            <button id="confirmboxcancel" type="button">cancel</button>
+        </div>
+    </div>
+
+</body>
+</html>

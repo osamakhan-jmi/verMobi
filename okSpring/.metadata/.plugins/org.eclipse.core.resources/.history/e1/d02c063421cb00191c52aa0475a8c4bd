@@ -1,0 +1,11 @@
+package com.okSpring.verMobi.model;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="userInfo")
+@NamedQuery(name="userInfo.findAll", query="SELECT s FROM userInfo s")
+public class UserInfo {
+
+}

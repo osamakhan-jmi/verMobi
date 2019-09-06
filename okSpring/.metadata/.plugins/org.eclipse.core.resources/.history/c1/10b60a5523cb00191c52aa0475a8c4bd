@@ -1,0 +1,16 @@
+package com.okSpring.verMobi.repository;
+
+
+@Repository
+public interface UserInfoRepository extends JpaRepository<UserInfo, UserPhone> {
+	
+	@Query(value = "Select * from login_info_multiple_device where mobile_number = ?1", nativeQuery = true)
+	List<LoginInfoMultipleDevice> getLoginDevices(String mobileNumber);
+	
+	@Transactional
+	@Modifying
+	@Query(value = "delete from login_info_multiple_device where mobile_number = ?1", nativeQuery = true)
+	void deleteAllSessions(String mobileNumber);
+	
+}
+

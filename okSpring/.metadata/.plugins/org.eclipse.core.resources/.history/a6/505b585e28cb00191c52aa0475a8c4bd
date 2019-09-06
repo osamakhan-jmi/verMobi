@@ -1,0 +1,33 @@
+package com.okSpring.verMobi.Utils;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLConnection;
+import java.net.URL; 
+
+public class SMS {
+
+
+    public static Boolean sendSMS(String to, String message) {
+       
+        try {
+            URL url = new URL("https://smsapi.engineeringtgr.com/send/?Mobile=xxxxxxxxxx&Password=xxxxxx&Message=test&To=xxxxxxxxxx&Key=xxxxxxxxxxxxxx");
+            URLConnection urlcon = url.openConnection();
+            InputStream stream = urlcon.getInputStream();
+            int i;
+            String response="";
+            while ((i = stream.read()) != -1) {
+                response+=(char)i;
+            }
+            if(response.contains("success")){
+                System.out.println("Successfully send SMS");  
+                return true;
+            }else{
+                System.out.println(response);
+                return false;
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}

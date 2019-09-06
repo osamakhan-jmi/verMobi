@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Mobile</title>
+    <script src="/app.js"></script>
+    <script src="/jquery.min.js"></script>
+    <script src="/qrcode.js"></script>
+</head>
+<body onload="interval()">
+<noscript>
+	<h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable Javascript and reload this page!
+	</h2>
+</noscript>
+
+<table align="center" border="1">
+  <tr>
+    <th>Enter OTP</th>
+  </tr>
+  <tr>
+  	<td><input type="text" name="fname">></td>
+  	<td></td>
+  	<td></td>
+  	<td></td>
+  </tr>
+</table>
+
+</body>
+</html>

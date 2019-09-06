@@ -1,0 +1,48 @@
+
+var ws;
+var qrcode;
+
+function drawQr(payload){
+	document.getElementById("qrcode").innerHTML = "";	
+	qrcode = new QRCode(document.getElementById("qrcode"),{
+		text: payload,
+	    width: 400,
+	    height: 400,
+	    clean: true,
+	    correctLevel : QRCode.CorrectLevel.H
+	});
+}
+
+function connect() {
+	ws = new WebSocket('ws://localhost:8080/vermobi');
+	ws.onmessage = function(data){
+		console.log(data.data);
+		var cmmsg = data.data;
+		var type = cmmsg.substring(0, 4);
+		var msg = cmmsg.substring(4,cmmsg.length)
+		if (type == "an##") {
+			drawQr(msg);
+		}else if (type == "ok##") {
+			var otp = getValue();
+			console.log(otp)
+		}
+		
+	}
+}
+
+function interval(){
+	disconnect();
+	connect();
+	setInterval ( interval, 60000 );
+}
+
+function disconnect() {
+    if (ws != null) {
+        ws.close();
+    }
+}
+
+function getValue() {
+    var retVal = prompt("Enter OTP : ", "");
+    return retVal;
+ }

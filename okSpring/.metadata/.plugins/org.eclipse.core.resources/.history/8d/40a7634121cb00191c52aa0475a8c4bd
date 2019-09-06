@@ -1,0 +1,73 @@
+package com.okSpring.verMobi.model;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="userInfo")
+@NamedQuery(name="userInfo.findAll", query="SELECT s FROM userInfo s")
+public class UserInfo {
+
+	@Id
+	@Column(name="mobile_number")
+	private String mobileNumber;
+
+	@Column(name="imei")
+	private String imei;
+	
+	@Column(name="LOGGED_IN_ON")
+	private Date loggedInOn;
+	
+	@Column(name="UNIQUEID")
+	private String uniqueId;
+	
+	@Column(name="PLATFORM")
+	private String platform;
+	
+	@Column(name="LANGUAGE")
+	private String lang;
+	
+		
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+	public String getImei() {
+		return imei;
+	}
+	public void setImei(String imei) {
+		this.imei = imei;
+	}
+	public String getLanguage() {
+		return this.lang;
+	}
+	public void setLanguage(String lang) {
+		this.lang = lang;
+	}
+	
+	public String getUniqueId() {
+		return this.uniqueId;
+	}
+	
+	public void setUniqueId(String uniqueId) {
+		this.uniqueId = uniqueId;
+	}
+	
+	public String getPlatform() {
+		return this.platform;
+	}
+	
+	public void setPlatform(String platform) {
+		this.platform = platform;
+	}
+
+	public Date getLoggedInOn() {
+		return loggedInOn;
+	}
+
+	public void setLoggedInOn(Date loggedInOn) {
+		this.loggedInOn = loggedInOn;
+	}
+

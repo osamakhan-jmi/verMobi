@@ -1,0 +1,5 @@
+package com.okSpring.verMobi.repository;
+
+public class UserInfoRepository {
+
+}

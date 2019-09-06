@@ -1,0 +1,5 @@
+package com.okSpring.verMobi.model;
+
+public class UserInfo {
+
+}

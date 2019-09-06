@@ -1,0 +1,16 @@
+package com.okSpring.verMobi.Utils;
+
+public class OTP {
+	
+	  public static char[] generatorOTP(int length) 
+	  { 
+	    Random obj = new Random(); 
+	    char[] otp = new char[length]; 
+	    for (int i=0; i<length; i++) 
+	    { 
+	      otp[i]= (char)(obj.nextInt(10)+48); 
+	    } 
+	    return otp; 
+	  }
+
+}

@@ -1,0 +1,43 @@
+package com.okSpring.verMobi.model;
+
+import java.sql.Date;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="userInfo")
+@NamedQuery(name="userInfo.findAll", query="SELECT s FROM userInfo s")
+public class UserInfo {
+
+	@Id
+	@Column(name="mobile_number")
+	private String mobileNumber;
+
+	@Column(name="imei")
+	private String imei;
+	
+	@Column(name="OTP_TIME")
+	private Date otpTime;
+		
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+	public String getImei() {
+		return imei;
+	}
+	public void setImei(String imei) {
+		this.imei = imei;
+	}
+
+	public Date getLoggedInOn() {
+		return loggedInOn;
+	}
+
+	public void setLoggedInOn(Date loggedInOn) {
+		this.loggedInOn = loggedInOn;
+	}
+
